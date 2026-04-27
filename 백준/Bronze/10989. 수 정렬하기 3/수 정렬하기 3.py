@@ -1,12 +1,19 @@
 import sys
-input = sys.stdin.readline
-
-n = int(input())
-cnt = [0] * 10001
-
+n = int(sys.stdin.readline())
+idx_1 = {}
 for _ in range(n):
-    cnt[int(input())] += 1
-for i in range(1, 10001):
-    if cnt[i] > 0:
-        for j in range(cnt[i]):
-            print(i)
+    i = int(sys.stdin.readline())
+    if i in idx_1:
+        idx_1[i] += 1
+    else:
+        idx_1[i] = 1
+
+keys = idx_1.keys()
+
+idx_2 = list(keys)
+idx_2.sort()
+
+for idx in idx_2:
+    count = idx_1.get(idx)
+    for _ in range(count):
+        print(idx)
