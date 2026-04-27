@@ -1,0 +1,12 @@
+def f(n):
+    if n >= 2 and memo[n] == 0:
+        memo[n] = f(n-1) + 2 * f(n-2)
+    return memo[n]
+
+
+N = int(input())
+memo = [0] * (N+1)
+memo[0] = 1
+memo[1] = 1
+result = f(N)
+print(result % 10007)
