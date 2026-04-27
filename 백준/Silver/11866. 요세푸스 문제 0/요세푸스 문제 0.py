@@ -1,17 +1,14 @@
 n, k = map(int, input().split())
-queue = [i for i in range(1, n+1)]
-result = [0] * n
-idx = 0
-front = -1
-while idx < n:
-    for _ in range(k):
-        front += 1
-        front = front % n
-        if queue[front] == 0:
-            while queue[front] == 0:
-                front += 1
-                front = front % n
-    result[idx] = str(queue[front])
-    idx += 1
-    queue[front] = 0
-print("<" + ", ".join(result) + ">")
+num = []
+ans = []
+for i in range(n):
+    num.append(i+1)
+checker = k - 1
+while len(num) > 0:
+    if checker < len(num):
+        ans.append(str(num[checker]))
+        del num[checker]
+        checker += (k - 1)
+    else:
+        checker = checker - len(num)
+print('<'+', '.join(ans)+'>')
