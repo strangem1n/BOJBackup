@@ -1,24 +1,22 @@
-def f(n):
-    if n == 7:
-        result = sum(p)
-        if result == 100:
-            for i in range(7):
-                ans[i] = p[i]
+import sys
+dwarfs = list(map(int, sys.stdin.read().splitlines()))
+fakes = sum(dwarfs) - 100
+checker = False
 
-    else:
-        for i in range(9):
-            if used[i] == 0:
-                used[i] = 1
-                p[n] = dwarf[i]
-                f(n+1)
-                used[i] = 0
+for i in dwarfs:
+    for j in dwarfs:
+        if i == j:
+            pass
+        else:
+            if i + j == fakes:
+                checker = True
+                break
+    if checker == True:
+        break
 
+dwarfs.remove(i)
+dwarfs.remove(j)
 
-dwarf = [int(input()) for _ in range(9)]
-used = [0] * 9
-p = [0] * 7
-ans = [0] * 7
-f(0)
-ans.sort()
-for i in ans:
-    print(i)
+dwarfs.sort()
+for dwarf in dwarfs:
+    print(dwarf)
