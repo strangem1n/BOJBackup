@@ -1,0 +1,6 @@
+import sys
+input = sys.stdin.readline
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    print(((n**3 + 3*n**2 + 2*n) // 6)**2)
